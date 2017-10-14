@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jacoco'
+
+webAppDirName = "src/main/webapp"
+
+dependencies {
+    testCompile project.ext.junit
+    testCompile project.ext.mockito
+	
+	compile project.ext.jersey
+    
+    compile project(":dominio")
+}
+
+war{
+	archiveName 'web.war'
+}
+
+eclipse {
+	jdt{
+		sourceCompatibility=1.8
+		targetCompatibility=1.8
+	}
+
+	project {
+		name = 'web'
+
+        buildCommand 'com.google.gdt.eclipse.core.webAppProjectValidator'
+	}
+
+	wtp {
+		facet {
+			facet name:'java', version:'1.8'
+			facet name:'jst.web', version:'2.5'
+		}
+	}
+
+}
+
+test {
+	jacoco {
+		append = false
+		destinationFile = file("jacoco/jacocoTest.exec")
+	}
+	reports.junitXml.destination =  file("jacoco/test-results")
+}
