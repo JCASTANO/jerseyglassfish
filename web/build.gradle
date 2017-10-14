@@ -6,11 +6,12 @@ apply plugin: 'jacoco'
 webAppDirName = "src/main/webapp"
 
 dependencies {
-    testCompile project.ext.junit
-    testCompile project.ext.mockito
+    //testCompile project.ext.junit
+    //testCompile project.ext.mockito
 	
 	//providedCompile sirve para usar la dependencia en tiempo de desarrollo pero no incluirla en el artefacto final en este caso jersey está dentro de glassfish
 	//compile sirve para usar la dependencia en tiempo de desarrollo e incluirla en el artefactor final
+	
 	compile project.ext.jersey
     
     compile project(":persistencia")
