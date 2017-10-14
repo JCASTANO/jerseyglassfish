@@ -1,1 +1,1 @@
-include "dominio","web"
+include "dominio","web","persistencia"

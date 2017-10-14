@@ -13,7 +13,7 @@ dependencies {
 	//compile sirve para usar la dependencia en tiempo de desarrollo e incluirla en el artefactor final
 	providedCompile project.ext.jersey
     
-    compile project(":dominio")
+    compile project(":persistencia")
 }
 
 war{
