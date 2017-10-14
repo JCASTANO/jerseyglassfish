@@ -39,3 +39,15 @@ test {
 	}
 	reports.junitXml.destination =  file("jacoco/test-results")
 }
+
+task deploy(dependsOn: 'war', type:Exec) {
+    workingDir "${glassfishHome}${File.separator}bin"
+
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'cmd', '/c', 'asadmin.bat','--user=admin','--passwordfile='+"${passwordfile}"
+    } else {
+        commandLine "./asadmin"
+    }
+
+    args "deploy", "--force=true", "${war.archivePath}"
+}
