@@ -11,7 +11,7 @@ dependencies {
 	
 	//providedCompile sirve para usar la dependencia en tiempo de desarrollo pero no incluirla en el artefacto final en este caso jersey está dentro de glassfish
 	//compile sirve para usar la dependencia en tiempo de desarrollo e incluirla en el artefactor final
-	providedCompile project.ext.jersey
+	compile project.ext.jersey
     
     compile project(":persistencia")
 }

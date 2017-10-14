@@ -5,6 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import co.com.mycompany.domain.Person;
 import co.com.mycompany.repository.MysqlPersonRepository;
 import co.com.mycompany.service.PersonService;
 
@@ -18,8 +19,8 @@ public class PersonController {
   }
 
   @GET
-  @Produces(MediaType.TEXT_PLAIN)
-  public String get() {
-    return "Hello from Jersey " + this.personService.find().getName();
+  @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+  public Person get() {
+    return this.personService.find();
   }
 }
